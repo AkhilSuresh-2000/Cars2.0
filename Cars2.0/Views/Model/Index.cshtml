@@ -1,24 +1,29 @@
-﻿@model IEnumerable<Cars2._0.Models.Make>
+﻿@model IEnumerable<Cars2._0.Models.Model>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br /><br />
+<br />
+<br />
 
 <div class="row">
     <div class="col-6">
-        <h2 class="text-info"> Makes of Cars  </h2>
+        <h2 class="text-info"> Model of the vehicle  </h2>
     </div>
     <div class="col-6 text-right ">
-        <a class="btn btn-info" asp-action="Create" ><i class="fas fa-car"></i> &nbsp; Add new make</a>
+        <a class="btn btn-info" asp-action="Create"><i class="fas fa-car"></i> &nbsp; Add new Model</a>
     </div>
     <br />
     <div class="col-12">
         <table class="table table-striped border">
             <tr class="table-info">
+               
                 <th>
-                    @Html.DisplayNameFor(m=>m.Name)
+                    @Html.DisplayNameFor(m => m.Make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Name)
                 </th>
                 <th></th>
             </tr>
@@ -28,8 +33,8 @@
             <td>
                 @Html.DisplayFor(m => item.Name)
             </td>
-
-            <partial name="_TableButtonPartial" model="item.id" />
+            
+               <partial name="_TableButtonPartial" model="item.Id"/>
 
         </tr>
             }

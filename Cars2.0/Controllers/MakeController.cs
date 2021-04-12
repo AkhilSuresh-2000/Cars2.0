@@ -50,7 +50,7 @@ namespace Cars2._0.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var make = _db.Makes.Find(id);
@@ -74,6 +74,8 @@ namespace Cars2._0.Controllers
 
             return View(make);
         }
+
+      
 
 
     }
