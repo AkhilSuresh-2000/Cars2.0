@@ -8,7 +8,7 @@ namespace Cars2._0.Models
 {
     public class Make
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
         [StringLength(255)]
         public string  Name { get; set; }
