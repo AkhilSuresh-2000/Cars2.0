@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cars2._0.AppDbContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace Cars2._0
 {
@@ -25,9 +27,14 @@ namespace Cars2._0
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<CarsDbContext>().AddDefaultTokenProviders();
+            
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -35,6 +42,7 @@ namespace Cars2._0
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+               
             }
             else
             {
@@ -46,7 +54,7 @@ namespace Cars2._0
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -61,6 +69,7 @@ namespace Cars2._0
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

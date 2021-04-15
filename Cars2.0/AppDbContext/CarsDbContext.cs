@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Cars2._0.Models;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace Cars2._0.AppDbContext
 {
-    public class CarsDbContext: DbContext
+    public class CarsDbContext: IdentityDbContext<IdentityUser>
     {
         public CarsDbContext(DbContextOptions<CarsDbContext> options):
             base(options)
