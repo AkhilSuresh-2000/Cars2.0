@@ -5,8 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cars2._0.Models;
 using Cars2._0.AppDbContext;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Cars2._0.Controllers
 {
+    [Authorize(Roles = "Admin,Executive")]
     public class MakeController : Controller
     {
         private readonly CarsDbContext _db;

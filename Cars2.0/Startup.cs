@@ -30,7 +30,8 @@ namespace Cars2._0
             services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<CarsDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<CarsDbContext>()
+                .AddDefaultUI().AddDefaultTokenProviders();
             
         }
 
